@@ -48,5 +48,6 @@
        For All Bank Details
        
  6. Tests are written for the first query in "tests/test_schema.py" file.
+ 7. I have added the Database db.sqlite3 so that no one needs to upload the data from csv file.
  
  ### So that's how the above problem is solved which took some hours to complete as I was using CSV for first time.
