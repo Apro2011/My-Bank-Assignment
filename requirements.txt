@@ -12,6 +12,8 @@ iniconfig==2.0.0
 packaging==23.0
 pluggy==1.0.0
 promise==2.3
+psycopg2==2.9.5
+python-dotenv==1.0.0
 six==1.16.0
 sqlparse==0.4.3
 text-unidecode==1.3

@@ -1,0 +1,32 @@
+name: Deploy to Vercel
+
+on:
+  push:
+    branches: ['master']
+
+jobs:
+  build-and-deploy:
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: 'Create env file'
+      run: |
+        touch .env
+        echo DJANGO_SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }} >> .env
+        echo DATABASE_NAME=${{ secrets.DATABASE_NAME }} >> .env
+        echo DATABASE_USER=${{ secrets.DATABASE_USER }} >> .env
+        echo DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} >> .env
+        echo DATABASE_HOST=${{ secrets.DATABASE_HOST }} >> .env
+    - name: Deploy to Vercel
+      uses: amondnet/vercel-action@v20
+      with:
+        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+    
