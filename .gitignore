@@ -1,6 +1,5 @@
 __pycache__
 migrations/
 env
-db.sqlite3
 .env
 .vercel
